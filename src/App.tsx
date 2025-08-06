@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom"; // 🔁 Switched from BrowserRouter to HashRouter
 import { SchoolProvider, useSchool } from "@/contexts/SchoolContext";
 import { BottomNavigation } from "@/components/BottomNavigation";
 import LoginPage from "./pages/LoginPage";
@@ -42,11 +42,11 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <HashRouter> {/* 🔁 This fixes 404s on GitHub Pages */}
         <SchoolProvider>
           <AppContent />
         </SchoolProvider>
-      </BrowserRouter>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
